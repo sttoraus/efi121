@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int[][] spielfeld = intBoard(2);
 		printBoard(spielfeld);
 		Scanner scan = new Scanner(System.in);
@@ -14,7 +13,7 @@ public class Main {
 			if (erlaubt(eingabe, spielfeld)) {
 				spielfeld = swapFields(eingabe, spielfeld);
 			} else
-				System.out.println("ungültiger Zug");
+				System.out.println("ungÃ¼ltiger Zug");
 			printBoard(spielfeld);
 		}
 		System.out.println("Ende");
@@ -32,21 +31,15 @@ public class Main {
 				counter2++;
 			}
 		}
-		if (counter == feld.length * feld.length) {
-			return true;
-		}
 
-		return false;
-
+		return counter == feld.length * feld.length;
 	}
 
 	private static boolean erlaubt(int i, int[][] feld) {
 		int[] neu = getFieldIndex(i, feld);
 		int[] alt = getFieldIndex(0,feld);
-		if (Math.abs(neu[0]-alt[0])+Math.abs(neu[1]-alt[1])==1) {
-			return true;
-		}
-		return false;
+		
+		return Math.abs(neu[0]-alt[0])+Math.abs(neu[1]-alt[1])==1;
 	}
 
 	private static int[][] swapFields(int i, int[][] feld) {
